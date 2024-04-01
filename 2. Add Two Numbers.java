@@ -93,3 +93,8 @@ class Solution {
         return head.next;
     }
 }
+
+/*
+ * Time Complexity: O(n) where n is the length of the longest linked list
+ * Space Complexity: O(n) where n is the length of the longest linked list
+ */
