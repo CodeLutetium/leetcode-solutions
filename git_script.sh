@@ -11,12 +11,11 @@ else
     # Perform git add on the file
     git add "$file"
 
-
     # Get the filename without the extension
     filename=$(basename "$file")
     filename="${filename%.*}"
 
-    git commit -m "Added $filemname"
+    git commit -m "Added $filename"
     git push
-    echo "Added $file to git."
+    echo "Added $filename to git."
 fi
