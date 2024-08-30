@@ -11,3 +11,10 @@ class Solution:
                 res[i] = res[i // 2] + 1
                 
         return res
+    
+"""
+Time complexity: O(n)
+Space complexity: O(n)
+
+Pattern to look out for: whether it is odd or even
+"""
