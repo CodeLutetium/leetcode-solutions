@@ -44,3 +44,8 @@ class Solution:
                 result.append(healths[i])
 
         return result
+    
+"""
+Time complexity: O(nlogn)
+Space complexity: O(n) (dependant on sorting algorithm used)
+"""
