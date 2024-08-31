@@ -17,5 +17,5 @@ else
 
     git commit -m "Added $filename"
     git push
-    echo "Added $filename to git."
+    echo "Added $file to git."
 fi
