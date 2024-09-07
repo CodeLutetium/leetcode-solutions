@@ -13,6 +13,7 @@
 Solution 1: DFS + Recursion
 
 Time complexity: O(n * m) where n is the number of nodes in the linked list and m is the number of nodes in the binary tree.
+Space complexty: O(n + m)
 """
 class Solution:
     def isSubPath(self, head: Optional[ListNode], root: Optional[TreeNode]) -> bool:
@@ -40,3 +41,53 @@ class Solution:
         # Current root is a start of path OR one of the child is the start of path
         return dfs(head, root) or self.isSubPath(head, root.left) or self.isSubPath(head, root.right)
 
+"""
+Solution 2: Iterative (similar to recursive DFS)
+
+Time complexity: O(n * m)
+Space complexity: O(n) due to stack
+"""
+class Solution:
+    def isSubPath(self, head: Optional[ListNode], root: Optional[TreeNode]) -> bool:
+        # Search for path starting from tree_node
+        def isMatch(node, head) -> bool:
+            if not node:
+                return False
+
+            stack = []
+            stack.append((node, head))
+
+            while stack:
+                curr_node, curr_list = stack.pop()
+
+                # Reached end of list
+                if curr_list == None:
+                    return True
+
+                if not curr_node:
+                    continue
+
+                if curr_node.val == curr_list.val:
+                    stack.append((curr_node.left, curr_list.next))
+                    stack.append((curr_node.right, curr_list.next))
+
+            return False
+
+        if not root:
+            return False
+        
+        nodes = []
+        nodes.append(root)
+
+        while nodes:
+            tree_node = nodes.pop()
+
+            if isMatch(tree_node, head):
+                return True
+            
+            if tree_node:
+                nodes.append(tree_node.left)
+                nodes.append(tree_node.right)
+
+        return False
+            
